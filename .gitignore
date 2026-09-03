@@ -1,0 +1,81 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+/playwright-report
+/test-results
+/.e2e
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env*
+!.env.example
+
+# local data (sqlite + media)
+/data
+# 截图脚本的本地测试产物(sqlite + 媒体，勿提交）
+/data-shots
+
+# 公司基础设施敏感文件（明文密钥，严禁提交）
+/env.md
+/id_ed25519
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# deploy.ps1 ssh -o UserKnownHostsFile=NUL 在 git-bash 下会落地一个 NUL 文件
+NUL
+
+# Public snapshot exclusions: internal delivery, private product records and
+# screenshots that may contain real user/project names.
+/AGENTS.md
+/CLAUDE.md
+/.agents/
+/.ci/
+/.tmp/
+/.gitlab-ci.yml
+/data-shots/
+/public/docs-shots/
+/docs/PRODUCT-OPTIMIZATION-ROADMAP.md
+/docs/BACKUP-RESTORE.md
+/docs/DATA-INTEGRITY.md
+/docs/Haitun-Post-Studio-PRD.pdf
+/docs/Haitun-Post-Studio-PRD.pptx
+/scripts/deploy.ps1
+/scripts/remote-deploy.sh
+/scripts/build_prd_ppt.py
+/scripts/capture-shots.mjs
+/src/lib/backup-lifecycle-source.test.ts
+
+# Claude Code 本地工具配置（个人权限/预览设置，勿提交）
+/.claude

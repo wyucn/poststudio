@@ -1,0 +1,70 @@
+body {
+  background: var(--background);
+  color: var(--foreground);
+  min-height: 100vh;
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  font-feature-settings: "kern" 1, "liga" 1;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  color: #171a14;
+  background: rgba(200, 255, 0, 0.72);
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+}
+
+/* 锚点跳转平滑滚动(侧边目录点击不再生硬跳动) */
+html {
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* 所有原生和自定义交互控件都有一致、清晰且不依赖颜色填充的键盘焦点。 */
+:where(
+  a[href],
+  button,
+  input,
+  textarea,
+  select,
+  summary,
+  [role="button"],
+  [role="tab"],
+  [role="menuitem"],
+  [role="option"],
+  [tabindex]:not([tabindex="-1"])
+):focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--ring) 72%, transparent);
+  outline-offset: 3px;
+}
+
+.focus-ring:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--ring) 78%, transparent);
+  outline-offset: 3px;
+}
+
+@keyframes progress-indeterminate {
+  from { transform: translateX(-110%); }
+  to { transform: translateX(310%); }
+}
+
+.progress-indeterminate {
+  animation: progress-indeterminate 1.25s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progress-indeterminate {
+    width: 100%;
+    animation: none;
+    opacity: 0.72;
+  }
+}

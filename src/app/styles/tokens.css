@@ -1,0 +1,142 @@
+/*
+ * Haitun Post Studio bright performance theme.
+ * Lando-inspired principles: clean white canvas, near-black typography,
+ * crisp outlines and scarce high-value fluorescent lime accents.
+ */
+
+:root {
+  color-scheme: light;
+  --background: #fbfcf9;
+  --foreground: #171a14;
+  --card: #ffffff;
+  --card-foreground: #171a14;
+  --popover: #ffffff;
+  --popover-foreground: #171a14;
+  --primary: #171a14;
+  --primary-foreground: #c8ff00;
+  --secondary: #f0f2ed;
+  --secondary-foreground: #262b22;
+  --muted: #f3f4f0;
+  --muted-foreground: #596057;
+  --accent: #ecffad;
+  --accent-foreground: #171a14;
+  --destructive: #c5223a;
+  --destructive-foreground: #ffffff;
+  --destructive-muted: #fff0f2;
+  --success: #3f6500;
+  --success-foreground: #ffffff;
+  --success-muted: #f1f7df;
+  --warning: #805400;
+  --warning-foreground: #ffffff;
+  --warning-muted: #fff4d6;
+  --info: #086b78;
+  --info-foreground: #ffffff;
+  --info-muted: #e7f5f7;
+  --favorite: #8a5a00;
+  --favorite-muted: #fff4dc;
+  --border: #d8dbd4;
+  --input: #bfc4ba;
+  --ring: #587500;
+  --magenta: #b83b0d;
+  --magenta-vivid: #f25c19;
+  --lime: #5c7800;
+  --lime-vivid: #c8ff00;
+  --cyan: #0c7f92;
+  --radius: 0.625rem;
+
+  --shadow-card: 0 1px 0 rgba(23, 26, 20, 0.04);
+  --shadow-card-hover: 0 8px 24px rgba(23, 26, 20, 0.08);
+  --shadow-float: 0 18px 46px rgba(23, 26, 20, 0.16);
+
+  --material-thin-bg: rgba(255, 255, 255, 0.92);
+  --material-regular-bg: rgba(255, 255, 255, 0.96);
+  --material-thick-bg: rgba(255, 255, 255, 0.99);
+  --material-thin-blur: 8px;
+  --material-regular-blur: 12px;
+  --material-thick-blur: 16px;
+
+  /* 字号基线：正文 16px、控件 15px、辅助信息 13–14px、装饰标签 10px */
+  --font-size-body: 1rem;
+  --font-size-control: 0.9375rem;
+  --font-size-secondary: 0.875rem;
+  --font-size-compact: 0.8125rem;
+  --font-size-micro: 0.625rem;
+  --line-height-body: 1.5rem;
+  --line-height-control: 1.375rem;
+  --line-height-secondary: 1.25rem;
+  --line-height-compact: 1.125rem;
+  --line-height-micro: 0.875rem;
+
+  /* 组件间距与控件尺寸：统一交互密度，不再在组件内散落魔法数字 */
+  --control-height: 2.5rem;
+  --control-height-sm: 2.25rem;
+  --control-height-lg: 2.75rem;
+  --control-height-icon: 2.5rem;
+  --space-panel: 1.25rem;
+  --space-dialog: 1.5rem;
+  --space-section: 1.5rem;
+  --space-feedback: 0.625rem;
+
+  /* 字距刻度(§15):大标题收紧、正文归零、mono 微标签放开 */
+  --tracking-display: -0.02em;
+  --tracking-title: -0.01em;
+  --tracking-body: 0em;
+  --tracking-label: 0.08em;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-destructive-muted: var(--destructive-muted);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-success-muted: var(--success-muted);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-warning-muted: var(--warning-muted);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-info-muted: var(--info-muted);
+  --color-favorite: var(--favorite);
+  --color-favorite-muted: var(--favorite-muted);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-magenta: var(--magenta);
+  --color-magenta-vivid: var(--magenta-vivid);
+  --color-lime: var(--lime);
+  --color-lime-vivid: var(--lime-vivid);
+  --color-cyan: var(--cyan);
+  --radius-xl: calc(var(--radius) + 0.375rem);
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 3px);
+  --radius-sm: calc(var(--radius) - 5px);
+  /* 拉丁用 Space Grotesk，中文使用平台原生字体，避免随部署携带整套 CJK 字体分片 */
+  --font-sans: "Space Grotesk", "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  /* 等宽用 Space Mono；中文继续回退平台原生字体 */
+  --font-mono: "Space Mono", "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", Consolas, "Cascadia Mono", monospace;
+  --text-xs: var(--font-size-compact);
+  --text-xs--line-height: var(--line-height-compact);
+  --text-sm: var(--font-size-secondary);
+  --text-sm--line-height: var(--line-height-secondary);
+  --text-base: var(--font-size-body);
+  --text-base--line-height: var(--line-height-body);
+  --text-ui: var(--font-size-control);
+  --text-ui--line-height: var(--line-height-control);
+  --text-micro: var(--font-size-micro);
+  --text-micro--line-height: var(--line-height-micro);
+}

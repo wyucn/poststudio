@@ -1,0 +1,1 @@
+ALTER TABLE `storyboards` ADD `refs_json` text;

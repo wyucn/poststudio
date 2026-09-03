@@ -1,0 +1,1 @@
+ALTER TABLE `storyboards` ADD `settings_json` text;

@@ -1,0 +1,398 @@
+/* --------------------------------------------------------------------------
+ * Lando-inspired production workspace
+ * Editorial energy is concentrated in navigation, empty states and overlays;
+ * the working canvas remains warm and bright for long sessions.
+ * ----------------------------------------------------------------------- */
+
+:root {
+  --lando-lime: #c8ff00;
+  --lando-ink: #171a14;
+  --lando-olive: #596057;
+  --lando-paper: #ffffff;
+  --lando-paper-deep: #f3f4f0;
+  --lando-line: rgba(23, 26, 20, 0.14);
+}
+
+.workspace-shell {
+  position: relative;
+  isolation: isolate;
+  background: var(--lando-paper);
+  animation: workspace-appear 0.52s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.workspace-shell::after {
+  content: "";
+  position: absolute;
+  z-index: 100;
+  inset: 0;
+  pointer-events: none;
+  background: var(--lando-lime);
+  transform: translateX(105%);
+  clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+  animation: workspace-lime-cut 0.7s cubic-bezier(0.76, 0, 0.24, 1) both;
+}
+
+@keyframes workspace-appear {
+  from { opacity: 0.92; }
+  to { opacity: 1; }
+}
+
+@keyframes workspace-lime-cut {
+  0% { transform: translateX(-112%); }
+  46% { transform: translateX(-16%); }
+  100% { transform: translateX(112%); }
+}
+
+.workspace-rail {
+  --background: #ffffff;
+  --foreground: var(--lando-ink);
+  --muted: #f1f3ee;
+  --muted-foreground: #626960;
+  --accent: #efffb8;
+  --accent-foreground: var(--lando-ink);
+  --border: #d8dbd4;
+  --primary: var(--lando-lime);
+  --primary-foreground: var(--lando-ink);
+  overflow: hidden;
+  color: var(--foreground);
+  background: #ffffff;
+  box-shadow: none;
+}
+
+.workspace-brand-mark {
+  position: relative;
+  border: 1px solid var(--lando-ink);
+  border-radius: 5px;
+  background: var(--lando-lime);
+  box-shadow: 3px 3px 0 rgba(23, 26, 20, 0.14);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.workspace-brand-mark:hover {
+  transform: translate(-1px, -1px) rotate(-2deg);
+  box-shadow: 4px 4px 0 rgba(23, 26, 20, 0.18);
+}
+
+.workspace-rail-divider {
+  background: var(--lando-line);
+}
+
+.workspace-nav-item {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.workspace-nav-item:hover {
+  border-color: rgba(23, 26, 20, 0.18);
+  transform: translateX(1px);
+}
+
+.workspace-nav-item.is-active {
+  border-color: var(--lando-ink);
+  box-shadow: 3px 3px 0 rgba(23, 26, 20, 0.14);
+}
+
+.workspace-nav-item.is-active::after {
+  content: none;
+}
+
+@keyframes lando-speed-line {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+.workspace-main-surface {
+  background: #ffffff;
+}
+
+.video-stage-kicker,
+.project-switcher-eyebrow {
+  color: #4e6500;
+}
+
+.video-new-shot {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(23, 26, 20, 0.42);
+  border-radius: 6px;
+  background: #ffffff;
+}
+
+.video-new-shot::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 34%;
+  height: 3px;
+  background: var(--lando-lime);
+  transition: width 0.28s ease;
+}
+
+.video-new-shot:hover::after { width: 100%; }
+
+.video-stage {
+  background: #ffffff;
+}
+
+.video-stage-canvas {
+  isolation: isolate;
+  background: #ffffff;
+}
+
+.video-stage-empty {
+  animation: stage-copy-in 0.65s 0.16s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes stage-copy-in {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.video-stage-mark {
+  position: relative;
+  border: 1px solid var(--lando-ink);
+  border-radius: 5px;
+  color: var(--lando-ink);
+  background: var(--lando-lime);
+  box-shadow: 5px 5px 0 rgba(23, 26, 20, 0.12);
+  transform: rotate(-2deg);
+}
+
+.video-stage-mark svg { transform: rotate(2deg); }
+
+.video-stage-speedline {
+  position: relative;
+  display: block;
+  width: 92px;
+  height: 3px;
+  overflow: hidden;
+  background: rgba(40, 44, 32, 0.16);
+}
+
+.video-stage-speedline::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 42%;
+  background: var(--lando-lime);
+  animation: stage-speed 1.9s ease-in-out infinite;
+}
+
+@keyframes stage-speed {
+  0%, 100% { left: -45%; }
+  52% { left: 105%; }
+}
+
+.creation-primary-action {
+  border: 1px solid rgba(23, 26, 20, 0.82) !important;
+  border-radius: 6px !important;
+  color: var(--lando-ink) !important;
+  background: var(--lando-lime) !important;
+  box-shadow: 4px 4px 0 rgba(23, 26, 20, 0.17) !important;
+}
+
+.creation-primary-action:hover {
+  transform: translate(-1px, -1px) !important;
+  filter: none;
+  box-shadow: 5px 5px 0 rgba(23, 26, 20, 0.2) !important;
+}
+
+.project-switcher-backdrop {
+  background: rgba(23, 26, 20, 0.18);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  animation: project-backdrop-in 0.25s ease-out both;
+}
+
+.project-switcher-panel {
+  --background: #ffffff;
+  --foreground: var(--lando-ink);
+  --card: #ffffff;
+  --muted: #f1f3ee;
+  --muted-foreground: #626960;
+  --accent: #efffb8;
+  --accent-foreground: var(--lando-ink);
+  --border: #d8dbd4;
+  --input: #bfc4ba;
+  --primary: var(--lando-lime);
+  --primary-foreground: var(--lando-ink);
+  overflow: hidden;
+  color: var(--foreground);
+  border-right: 1px solid rgba(23, 26, 20, 0.32);
+  background: #ffffff;
+  clip-path: none;
+  box-shadow: 12px 0 36px rgba(23, 26, 20, 0.12);
+  animation: project-panel-in 0.46s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes project-backdrop-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes project-panel-in {
+  from {
+    opacity: 0;
+    transform: translateX(-26px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.project-switcher-eyebrow {
+  margin-bottom: 0.35rem;
+  color: #4e6500;
+}
+
+.project-switcher-search {
+  border-radius: 7px;
+  background: #f7f8f5;
+}
+
+.project-switcher-item {
+  position: relative;
+  border-radius: 7px;
+}
+
+.project-switcher-item.is-active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 9px;
+  bottom: 9px;
+  width: 3px;
+  background: var(--lando-lime);
+}
+
+@media (max-width: 767px) {
+  .workspace-shell {
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-rows: minmax(0, 1fr) calc(64px + env(safe-area-inset-bottom)) !important;
+  }
+
+  .workspace-main-surface {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .workspace-rail {
+    grid-column: 1;
+    grid-row: 2;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.25rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    border-top: 1px solid rgba(23, 26, 20, 0.2);
+    border-right: 0;
+    padding: 0.35rem 0.5rem calc(0.35rem + env(safe-area-inset-bottom));
+    box-shadow: 0 -8px 24px rgba(23, 26, 20, 0.08);
+    scrollbar-width: none;
+    touch-action: pan-x;
+  }
+
+  .workspace-rail::-webkit-scrollbar {
+    display: none;
+  }
+
+  .workspace-brand-mark {
+    display: none;
+  }
+
+  .workspace-creation-nav,
+  .workspace-project-nav,
+  .workspace-utility-nav {
+    display: flex;
+    width: max-content;
+    flex: 0 0 auto;
+    flex-direction: row;
+    gap: 0.25rem;
+  }
+
+  .workspace-utility-nav {
+    margin-top: 0;
+  }
+
+  .workspace-rail-divider {
+    width: 1px;
+    height: 36px;
+    flex: 0 0 auto;
+    margin: 0 0.25rem;
+  }
+
+  .workspace-rail .workspace-nav-item {
+    width: 54px;
+    min-width: 54px;
+    min-height: 50px;
+    flex: 0 0 54px;
+    gap: 0.1rem;
+    padding: 0.2rem 0.25rem;
+  }
+
+  .workspace-rail .workspace-nav-item:hover {
+    transform: translateY(-1px);
+  }
+
+  .workspace-rail .workspace-nav-item.is-active {
+    box-shadow: 2px 2px 0 rgba(23, 26, 20, 0.14);
+  }
+
+  .project-switcher-panel {
+    width: min(360px, calc(100vw - 1rem)) !important;
+  }
+
+  .creator-history-dialog {
+    height: min(82dvh, 680px);
+    align-self: flex-end;
+  }
+
+  .creation-stage-description {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .creation-workspace-mode-label {
+    display: none;
+  }
+}
+
+@media (max-height: 700px) {
+  .starter-prompts,
+  .creation-stage-description {
+    display: none;
+  }
+}
+
+@media (max-height: 760px) {
+  .video-stage-empty .video-stage-mark { margin-top: 0.6rem; margin-bottom: 0.75rem; }
+  .video-stage-empty .video-stage-speedline { margin-top: 0.75rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .workspace-shell,
+  .workspace-shell::after,
+  .video-stage-empty,
+  .video-stage-speedline::after,
+  .project-switcher-backdrop,
+  .project-switcher-panel {
+    animation: none !important;
+  }
+  .history-sidebar-item,
+  .history-sidebar-preview img,
+  .workspace-nav-item,
+  .workspace-brand-mark {
+    transition-duration: 0.01ms !important;
+  }
+}

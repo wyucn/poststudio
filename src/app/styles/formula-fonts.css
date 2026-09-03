@@ -1,0 +1,14 @@
+@font-face {
+  font-family: "STIX Two Text";
+  src: url("/vendor/formula-fonts/stix-two-text-400-normal.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "STIX Two Math";
+  src: url("/vendor/formula-fonts/stix-two-math-400-normal.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}

@@ -1,0 +1,20 @@
+# Haitun Post Studio - 单容器部署（SQLite + 本地媒体存储，数据持久化在 volume）
+# 用法：
+#   1. 复制 .env.example 为 .env 并填写 ARK_API_KEY / AUTH_SECRET
+#   2. docker compose up -d --build
+#   3. 浏览器访问 http://<主机IP>:3000，团队成员同局域网即可使用
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    environment:
+      - DATA_DIR=/app/data
+    volumes:
+      - haitun-data:/app/data
+    restart: unless-stopped
+
+volumes:
+  haitun-data:
